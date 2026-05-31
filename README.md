@@ -11,6 +11,7 @@ Fitur:
 - Responsif penuh (desktop, tablet, mobile)
 - SEO-ready: metadata, Open Graph, sitemap, robots.txt, JSON-LD
 - Animasi halus saat scroll & tombol WhatsApp mengambang
+- **Keamanan**: security headers lengkap (CSP, HSTS, X-Frame-Options, dll), 0 kerentanan dependency
 
 ## Menjalankan secara lokal
 
@@ -110,3 +111,30 @@ src/
     ├── site.ts           # Data bisnis (EDIT DI SINI)
     └── content.ts        # Konten teks (EDIT DI SINI)
 ```
+
+---
+
+## Keamanan
+
+Website ini sudah dikonfigurasi dengan praktik keamanan standar produksi:
+
+- **Security headers** (diatur di `next.config.mjs`, berlaku untuk semua route):
+  - `Content-Security-Policy` — membatasi sumber resource untuk mencegah XSS.
+  - `Strict-Transport-Security` (HSTS) — memaksa HTTPS.
+  - `X-Frame-Options: DENY` & `frame-ancestors 'none'` — mencegah clickjacking.
+  - `X-Content-Type-Options: nosniff` — mencegah MIME-sniffing.
+  - `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy`.
+- Header `X-Powered-By` dimatikan agar tidak membocorkan teknologi yang dipakai.
+- Semua tautan eksternal memakai `rel="noopener noreferrer"` (mencegah tabnabbing).
+- Output JSON-LD di-escape sebagai pertahanan berlapis terhadap XSS.
+- Nomor WhatsApp disanitasi sebelum dibentuk menjadi URL.
+- `npm audit` bersih (0 kerentanan). Versi `postcss` dipaksa aman via `overrides`.
+
+Verifikasi audit kapan saja dengan:
+
+```bash
+npm audit
+```
+
+> Catatan: HSTS dengan `preload` baru aktif penuh setelah situs diakses via HTTPS
+> (otomatis di Vercel dan saat domain Anda sudah pakai SSL).

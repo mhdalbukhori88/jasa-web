@@ -34,7 +34,11 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        // Escape karakter '<' sebagai pertahanan berlapis agar konten
+        // tidak dapat keluar dari konteks <script> (mitigasi XSS).
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <Navbar />
       <main>

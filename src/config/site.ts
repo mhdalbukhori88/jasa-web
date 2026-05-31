@@ -40,9 +40,11 @@ export type SiteConfig = typeof siteConfig;
 
 // Pesan default saat pengguna klik tombol konsultasi WhatsApp.
 export const whatsappLink = (message?: string) => {
+  // Sanitasi nomor: hanya sisakan digit untuk mencegah URL rusak/injeksi.
+  const number = siteConfig.contact.whatsapp.replace(/\D/g, "");
   const text = encodeURIComponent(
     message ??
       `Halo ${siteConfig.name}, saya tertarik dengan jasa pembuatan website. Boleh konsultasi?`
   );
-  return `https://wa.me/${siteConfig.contact.whatsapp}?text=${text}`;
+  return `https://wa.me/${number}?text=${text}`;
 };
