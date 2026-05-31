@@ -14,12 +14,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-950 text-brand-100">
+    <footer className="bg-brand-950 text-brand-100 dark:bg-ink-900 dark:text-slate-300">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Logo light />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-brand-200/80">
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-brand-200/80 dark:text-slate-400">
               {siteConfig.tagline}. Kami membantu bisnis Anda tampil profesional
               dan terpercaya di dunia digital lewat website modern, cepat, dan
               SEO-ready.

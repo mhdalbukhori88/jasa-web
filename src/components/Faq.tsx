@@ -9,7 +9,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-white py-20 lg:py-28">
+    <section id="faq" className="bg-white py-20 dark:bg-ink-800 lg:py-28">
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="FAQ"
@@ -25,8 +25,8 @@ export default function Faq() {
                 key={i}
                 className={`overflow-hidden rounded-xl border transition-colors ${
                   isOpen
-                    ? "border-brand-200 bg-brand-50/50"
-                    : "border-slate-200 bg-white"
+                    ? "border-brand-200 bg-brand-50/50 dark:border-brand-500/30 dark:bg-brand-500/10"
+                    : "border-slate-200 bg-white dark:border-white/10 dark:bg-ink-900"
                 }`}
               >
                 <button
@@ -35,13 +35,13 @@ export default function Faq() {
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-sm font-semibold text-slate-900">
+                  <span className="text-sm font-semibold text-slate-900 dark:text-white">
                     {faq.question}
                   </span>
                   <Icon
                     name="chevron"
                     size={20}
-                    className={`shrink-0 text-brand-600 transition-transform duration-300 ${
+                    className={`shrink-0 text-brand-600 transition-transform duration-300 dark:text-brand-400 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -54,7 +54,7 @@ export default function Faq() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-sm leading-relaxed text-slate-600">
+                    <p className="px-5 pb-5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                       {faq.answer}
                     </p>
                   </div>

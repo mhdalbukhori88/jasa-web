@@ -30,3 +30,54 @@ section[id] {
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
 }
+.dark ::-webkit-scrollbar-track {
+  background: #0e1530;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1d4ed8;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+@layer utilities {
+  /* Teks gradient biru */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-600 to-sky-500 bg-clip-text text-transparent dark:from-brand-300 dark:to-sky-300;
+  }
+
+  /* Border gradient halus untuk kartu */
+  .card-ring {
+    @apply ring-1 ring-slate-200/70 dark:ring-white/10;
+  }
+
+  /* Efek mask untuk fade tepi pada marquee */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
+}
+
+/* Hormati preferensi reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

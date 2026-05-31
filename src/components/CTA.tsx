@@ -4,13 +4,21 @@ import { siteConfig, whatsappLink } from "@/config/site";
 
 export default function CTA() {
   return (
-    <section className="bg-white pb-20 lg:pb-28">
+    <section className="bg-white pb-20 dark:bg-ink-800 lg:pb-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 px-8 py-14 text-center lg:px-16 lg:py-20">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 px-8 py-14 text-center shadow-2xl shadow-brand-900/30 dark:from-brand-800 dark:via-ink-700 dark:to-ink-900 lg:px-16 lg:py-20">
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-brand-500/20 blur-3xl" />
               <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-sky-400/20 blur-3xl" />
+              <div
+                className="absolute inset-0 opacity-[0.07]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                  backgroundSize: "44px 44px",
+                }}
+              />
             </div>
 
             <div className="relative">

@@ -56,9 +56,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Script anti-flash: menerapkan tema (dari localStorage atau preferensi
+  // sistem) sebelum halaman dirender agar tidak ada kedipan warna.
+  const themeScript = `
+    (function() {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  `;
+
   return (
-    <html lang="id" className={inter.variable}>
-      <body className="bg-white font-sans text-slate-800 antialiased">
+    <html lang="id" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-white font-sans text-slate-800 antialiased transition-colors duration-300 dark:bg-ink-900 dark:text-slate-300">
         {children}
       </body>
     </html>

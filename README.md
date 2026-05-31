@@ -4,6 +4,14 @@ Landing page profesional untuk bisnis jasa pembuatan website, dibangun dengan
 **Next.js 16 + TypeScript + Tailwind CSS**. Dirancang agar mudah di-deploy ke
 **Vercel** dan dipindahkan ke hosting/domain Anda sendiri nanti.
 
+Fitur:
+
+- Desain modern & profesional dengan tema biru
+- **Dark mode** (tombol toggle + otomatis mengikuti preferensi sistem, tersimpan di browser)
+- Responsif penuh (desktop, tablet, mobile)
+- SEO-ready: metadata, Open Graph, sitemap, robots.txt, JSON-LD
+- Animasi halus saat scroll & tombol WhatsApp mengambang
+
 ## Menjalankan secara lokal
 
 ```bash
